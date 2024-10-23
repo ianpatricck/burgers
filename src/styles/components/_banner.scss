@@ -1,0 +1,13 @@
+@use "../abstracts/" as abstracts;
+
+.banner {
+  height: 150px;
+
+  .background {
+    background-image: url(abstracts.$banner-image);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+  }
+}

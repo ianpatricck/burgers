@@ -4,12 +4,14 @@ import Contact from "./pages/Contact";
 import Enter from "./pages/Enter";
 import Navbar from "./components/Navbar/Navbar";
 import { AnimatePresence } from "framer-motion";
+import Banner from "./components/Banner/Banner";
 
 export default function App() {
   return (
     <>
       <Router>
         <Navbar />
+        <Banner />
         <AnimatePresence>
           <Routes>
             <Route path="/" element={<Menu />} />
