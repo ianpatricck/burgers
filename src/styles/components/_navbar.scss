@@ -1,0 +1,93 @@
+@use "../abstracts/" as abstracts;
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: abstracts.$primary-color;
+
+  .items {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    margin-top: 10px;
+
+    .item {
+      padding: 0 4rem 10px 4rem;
+      font-size: 16px;
+      text-decoration: none;
+      color: white;
+
+      &--active {
+        @extend .item;
+        border-bottom: 3px solid white;
+      }
+    }
+
+    @media screen and (max-width: abstracts.$small-width) {
+      display: none;
+    }
+  }
+
+  .navbar_small {
+    display: none;
+    width: 100%;
+
+    @media screen and (max-width: abstracts.$small-width) {
+      display: flex;
+      flex-direction: column;
+      align-content: space-between;
+    }
+
+    .items_small {
+      display: flex;
+      justify-content: right;
+      padding: 0.8rem;
+
+      .wrapper {
+        display: flex;
+        width: 60%;
+        justify-content: space-between;
+
+        .title {
+          color: #ffffff;
+          font-size: 16pt;
+          font-weight: 500;
+        }
+
+        .icon {
+          color: #ffffff;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .menu_small {
+      background-color: #ffffff;
+      padding: 0.3rem;
+      display: flex;
+      justify-content: space-between;
+
+      .item {
+        margin: 0.6rem;
+        font-size: 14px;
+        font-weight: 800;
+        text-decoration: none;
+        color: #000000;
+        padding: 5px;
+
+        &:hover {
+          border-bottom: 3px solid #ccc;
+        }
+
+        &--active {
+          @extend .item;
+          border-bottom: 3px solid #ccc;
+        }
+      }
+    }
+  }
+}
