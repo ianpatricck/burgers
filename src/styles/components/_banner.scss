@@ -4,6 +4,10 @@
   height: 150px;
 
   .background {
+    background: linear-gradient(to left,
+        abstracts.$banner-background-color,
+        #ffffff,
+        abstracts.$banner-background-color );
     background-image: url(abstracts.$banner-image);
     background-repeat: no-repeat;
     background-position: center;
