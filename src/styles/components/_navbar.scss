@@ -39,23 +39,23 @@
       align-content: space-between;
     }
 
-    .items_small {
+    .navbar_items_small {
       display: flex;
       justify-content: right;
       padding: 0.8rem;
 
-      .wrapper {
+      .navbar_items_small_wrapper {
         display: flex;
         width: 60%;
         justify-content: space-between;
 
-        .title {
+        .navbar_small__title {
           color: #ffffff;
           font-size: 16pt;
           font-weight: 500;
         }
 
-        .icon {
+        .navbar_small__menu-icon {
           color: #ffffff;
 
           &:hover {
@@ -65,13 +65,13 @@
       }
     }
 
-    .menu_small {
+    .menu-small {
       background-color: #ffffff;
       padding: 0.3rem;
       display: flex;
       justify-content: space-between;
 
-      .item {
+      .menu-small__item {
         margin: 0.6rem;
         font-size: 14px;
         font-weight: 800;
@@ -84,7 +84,7 @@
         }
 
         &--active {
-          @extend .item;
+          @extend .menu-small__item;
           border-bottom: 3px solid #ccc;
         }
       }

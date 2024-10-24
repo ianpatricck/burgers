@@ -10,11 +10,11 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <div className="navbar_small">
-        <nav className="items_small">
-          <div className="wrapper">
-            <h1 className="title">{currentTab}</h1>
+        <nav className="navbar_items_small">
+          <div className="navbar_items_small_wrapper">
+            <h1 className="navbar_small__title">{currentTab}</h1>
             <Menu
-              className="icon"
+              className="navbar_small__menu-icon"
               onClick={() => setToggleMenuSmall(!toggleMenuSmall)}
             />
           </div>
@@ -22,13 +22,13 @@ export default function Navbar() {
 
         {toggleMenuSmall ? (
           <motion.div
-            className="menu_small"
+            className="menu-small"
             initial={{ opacity: 0.5 }}
             animate={{ opacity: 1 }}
           >
             <NavLink
               to="/"
-              className={({ isActive }) => (isActive ? "item--active" : "item")}
+              className={({ isActive }) => (isActive ? "menu-small__item--active" : "menu-small__item")}
               onClick={() => setCurrentTab("Menu")}
             >
               MENU
@@ -36,7 +36,7 @@ export default function Navbar() {
 
             <NavLink
               to="/enter"
-              className={({ isActive }) => (isActive ? "item--active" : "item")}
+              className={({ isActive }) => (isActive ? "menu-small__item--active" : "menu-small__item")}
               onClick={() => setCurrentTab("Entrar")}
             >
               ENTRAR
@@ -44,7 +44,7 @@ export default function Navbar() {
 
             <NavLink
               to="/contact"
-              className={({ isActive }) => (isActive ? "item--active" : "item")}
+              className={({ isActive }) => (isActive ? "menu-small__item--active" : "menu-small__item")}
               onClick={() => setCurrentTab("Contato")}
             >
               CONTATO
