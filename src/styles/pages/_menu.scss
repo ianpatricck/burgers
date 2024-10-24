@@ -1,0 +1,19 @@
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .menu_container {
+    width: 80%;
+  }
+
+  .menu_container_content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem; 
+    background-color: #F8F9FA;
+    padding: .5rem;
+    display: flex;
+  }
+
+}
