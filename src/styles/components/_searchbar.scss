@@ -1,0 +1,25 @@
+.searchbar {
+  background-color: #ffffff;
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border: 0.1rem solid #8a94a4;
+  border-radius: 8px;
+
+  .search-icon {
+    margin-right: 0.5rem;
+    color: #8a94a4;
+  }
+
+  .textfield {
+    border: none;
+    outline: 0;
+    width: 100%;
+    font-size: 11pt;
+
+    &::placeholder {
+      color: #2c2c2c;
+    }
+  }
+}
