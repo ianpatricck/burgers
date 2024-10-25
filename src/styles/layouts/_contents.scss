@@ -55,4 +55,72 @@
       }
     }
   }
+
+  .contents_main {
+
+    .contents_main_items {
+
+      .contents_main_items_nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        .contents_main_items__title {
+          font-size: 16pt;
+        }
+
+        .contents_main_items__icon {
+          color: #323232;
+          font-size: 21pt;
+        }
+      }
+
+      .contents_main_items_wrapper {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.5rem;
+
+        .contents_main_items__info {
+          width: 70%;
+
+          .contents_main_items__name {
+            font-size: 13pt;
+            color: #121212;
+            font-weight: 500;
+          }
+
+          .contents_main_items__description {
+            margin-top: .2rem;
+            margin-bottom: .2rem;
+            font-weight: 100;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-family: "Roboto Light";
+          }
+
+          .contents_main_items__price {
+            font-weight: 800;
+            color: #464646;
+          }
+        }
+
+        .contents_main_items__image-wrapper {
+          width: 130px;
+          height: 80px;
+
+          .contents_main_items__image {
+            object-fit: cover;
+            width: 130px;
+            height: 80px;
+            border-radius: 6px;
+          }
+        }
+      }
+    }
+  }
 }
