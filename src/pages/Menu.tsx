@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import SearchBar from "../components/SearchBar/SearchBar";
+import Cart from "../components/Cart/Cart";
+import Contents from "../layouts/Contents/Contents";
 
 export default function Menu() {
   return (
@@ -9,8 +11,15 @@ export default function Menu() {
       exit={{ opacity: 0 }}
     >
       <div className="menu">
-        <div className="container">
-          <SearchBar />
+        <div className="menu_container">
+          <div className="menu_container_nav">
+            <SearchBar />
+          </div>
+
+          <main className="menu_container_content">
+            <Contents />
+            <Cart />
+          </main>
         </div>
       </div>
     </motion.div>
