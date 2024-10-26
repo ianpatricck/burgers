@@ -1,3 +1,5 @@
+@use "../abstracts/" as abstracts;
+
 .menu {
   width: 100%;
   display: flex;
@@ -5,15 +7,33 @@
 
   .menu_container {
     width: 80%;
+
+    .menu_container_nav {
+      @media screen and (max-width: abstracts.$contents-small-width) {
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    .menu_container_content {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      background-color: #f8f9fa;
+      padding: 0.5rem;
+      display: flex;
+
+      @media screen and (max-width: abstracts.$contents-small-width) {
+        background-color: #ffffff;
+      }
+    }
+
+    @media screen and (max-width: abstracts.$contents-small-width) {
+      width: 100%;
+    }
   }
 
-  .menu_container_content {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.5rem; 
-    background-color: #F8F9FA;
-    padding: .5rem;
-    display: flex;
+  @media screen and (max-width: abstracts.$contents-small-width) {
+    background-color: #ffffff;
   }
-
 }

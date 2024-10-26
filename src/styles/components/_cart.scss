@@ -1,0 +1,35 @@
+@use "../abstracts/" as abstracts;
+
+.cart {
+  width: 35%;
+  margin: 1.5rem;
+
+  .cart_wrapper {
+    filter: drop-shadow(0 0 0.3rem rgba(0, 0, 0, 0.15));
+
+    .cart_header {
+      background-color: #f8f9fa;
+      padding: 1.2rem;
+
+      .cart_header__title {
+        color: #464646;
+        font-weight: 500;
+        font-size: 19pt;
+        font-family: "Roboto Medium";
+      }
+    }
+
+    .cart_main {
+      background-color: #ffffff;
+      padding: 1.5rem;
+
+      .cart_main__message-404 {
+        color: #464646;
+      }
+    }
+  }
+
+  @media screen and (max-width: abstracts.$contents-small-width) {
+    display: none;
+  }
+}

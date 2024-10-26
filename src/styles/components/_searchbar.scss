@@ -1,3 +1,5 @@
+@use "../abstracts/" as abstracts;
+
 .searchbar {
   background-color: #ffffff;
   margin-top: 0.7rem;
@@ -22,4 +24,8 @@
       color: #2c2c2c;
     }
   }
+
+  @media screen and (max-width: abstracts.$contents-small-width) {
+      width: 90%;
+    }
 }

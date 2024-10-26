@@ -8,7 +8,7 @@ export default function Contents() {
 
   useEffect(() => {
     const { sections } = menuDetails;
-    console.log(sections);
+
     const details = sections.map((details) => {
       return {
         name: details.name,

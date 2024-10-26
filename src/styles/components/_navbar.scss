@@ -24,7 +24,7 @@
       }
     }
 
-    @media screen and (max-width: abstracts.$small-width) {
+    @media screen and (max-width: abstracts.$navbar-small-width) {
       display: none;
     }
   }
@@ -33,7 +33,7 @@
     display: none;
     width: 100%;
 
-    @media screen and (max-width: abstracts.$small-width) {
+    @media screen and (max-width: abstracts.$navbar-small-width) {
       display: flex;
       flex-direction: column;
       align-content: space-between;
