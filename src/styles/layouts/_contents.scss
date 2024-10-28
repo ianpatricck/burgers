@@ -70,10 +70,14 @@
       .contents_main_items_nav {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         margin-top: 2rem;
+        padding: .2rem;
+        border-radius: .2em;
 
         &:hover {
           cursor: pointer;
+          background-color: #fafafafa;
         }
 
         .contents_main_items__title {
@@ -89,10 +93,10 @@
       .contents_main_items_wrapper {
         display: flex;
         justify-content: space-between;
-        margin-top: 1.5rem;
 
         .contents_main_items__info {
           width: 70%;
+          margin-top: 1.5rem;
 
           .contents_main_items__name {
             font-size: 13pt;
@@ -126,6 +130,7 @@
         .contents_main_items__image-wrapper {
           width: 130px;
           height: 80px;
+          margin-top: 1.5rem;
 
           .contents_main_items__image {
             object-fit: cover;
