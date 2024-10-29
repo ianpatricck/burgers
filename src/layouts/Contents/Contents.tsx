@@ -22,7 +22,11 @@ export default function Contents() {
 
     setMenuItems(details);
 
-    const items = details.map((item) => item.name.toLowerCase());
+    let items = details.map((item) =>
+      item.isSelected ? item.name.toLowerCase() : "",
+    );
+
+    items = items.filter((item) => item.trim() !== "");
 
     setItemsSectionsVisible(items);
   }, []);
@@ -52,10 +56,11 @@ export default function Contents() {
     <div className="contents">
       <header className="contents_navbar">
         {menuItems.map((item, index) => (
-          <nav
+          <motion.nav
             className={`contents_navbar__nav-item${item.isSelected ? "--selected" : ""}`}
             key={index}
             onClick={() => selectTab(item.name)}
+            whileTap={{ scale: 1.1 }}
           >
             <div
               className={`contents_navbar__nav-item_image-wrapper${item.isSelected ? "--selected" : ""}`}
@@ -68,7 +73,7 @@ export default function Contents() {
             </div>
 
             <span className="contents__text-item">{item.name}</span>
-          </nav>
+          </motion.nav>
         ))}
       </header>
 
@@ -80,7 +85,9 @@ export default function Contents() {
               onClick={() => toggleItem(item.name.toLowerCase())}
             >
               <h1 className="contents_main_items__title">{item.name}</h1>
-              <KeyboardArrowUp className="contents_main_items__icon" />
+              <KeyboardArrowUp
+                className={`contents_main_items__icon${itemsSectionVisible.includes(item.name.toLowerCase()) ? "--open" : "--closed"}`}
+              />
             </nav>
 
             <AnimatePresence>
@@ -95,15 +102,19 @@ export default function Contents() {
                     closed: {
                       opacity: 0,
                       marginTop: -40,
-                      display: "none"
-                    }
+                      display: "none",
+                    },
                   }}
                   initial={{ opacity: 1, y: 0 }}
-                  animate={itemsSectionVisible.includes(item.name.toLowerCase()) ? "open" : "closed"}
-                  transition={{ duration: .1 }}
+                  animate={
+                    itemsSectionVisible.includes(item.name.toLowerCase())
+                      ? "open"
+                      : "closed"
+                  }
+                  transition={{ duration: 0.1 }}
                   exit={{ opacity: 0 }}
                 >
-                  {1 == 1  && (
+                  {1 == 1 && (
                     <>
                       <div className="contents_main_items__info">
                         <h1 className="contents_main_items__name">
