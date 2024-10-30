@@ -15,13 +15,14 @@ export default function Contents() {
       return {
         name: details.name,
         image: details.images[0].image,
-        isSelected: details.name.toLowerCase() == "burgers" ? true : false,
+        isSelected: false,
         items: details.items,
       };
     });
 
-    setMenuItems(details);
+    details[0].isSelected = true;
 
+    setMenuItems(details);
     let items = details.map((item) =>
       item.isSelected ? item.name.toLowerCase() : "",
     );
@@ -39,6 +40,12 @@ export default function Contents() {
     });
 
     setMenuItems(cleanedNavbarItems);
+
+    menuItems.forEach((item) => {
+      if (item.isSelected) {
+        setItemsSectionsVisible([item.name.toLowerCase()]);
+      }
+    });
   }
 
   function toggleItem(itemName: string) {
@@ -50,6 +57,10 @@ export default function Contents() {
     setItemsSectionsVisible(
       itemsSectionVisible.filter((item) => item !== itemName),
     );
+  }
+
+  function convertAmountToBRL(amount: number): string {
+    return amount.toLocaleString("pt-br", { minimumFractionDigits: 2 });
   }
 
   return (
@@ -114,8 +125,13 @@ export default function Contents() {
                   transition={{ duration: 0.1 }}
                   exit={{ opacity: 0 }}
                 >
-                  {1 == 1 && (
-                    <>
+                  {food && (
+                    <motion.div
+                      className="contents_main__item"
+                      onClick={() => console.log(food.name)}
+                      whileHover={{ cursor: "pointer", scale: 0.97 }}
+                      whileTap={{ scale: 0.97 }}
+                    >
                       <div className="contents_main_items__info">
                         <h1 className="contents_main_items__name">
                           {food.name}
@@ -126,7 +142,7 @@ export default function Contents() {
                             : "Sem descrição provida"}
                         </p>
                         <span className="contents_main_items__price">
-                          R${food.price}
+                          R${convertAmountToBRL(food.price)}
                         </span>
                       </div>
 
@@ -139,7 +155,7 @@ export default function Contents() {
                           />
                         ) : null}
                       </div>
-                    </>
+                    </motion.div>
                   )}
                 </motion.div>
               ))}
