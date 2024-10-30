@@ -71,8 +71,8 @@
         justify-content: space-between;
         align-items: center;
         margin-top: 2rem;
-        padding: .2rem;
-        border-radius: .2em;
+        padding: 0.2rem;
+        border-radius: 0.2em;
 
         &:hover {
           cursor: pointer;
@@ -90,20 +90,23 @@
           &--open {
             @extend .contents_main_items__icon;
             rotate: 180deg;
-            transition: ease-in-out .3s;
+            transition: ease-in-out 0.3s;
           }
 
           &--closed {
             @extend .contents_main_items__icon;
             rotate: 0deg;
-            transition: ease-in-out .3s;
+            transition: ease-in-out 0.3s;
           }
         }
       }
 
       .contents_main_items_wrapper {
-        display: flex;
-        justify-content: space-between;
+        .contents_main__item {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
 
         .contents_main_items__info {
           width: 70%;
@@ -149,6 +152,10 @@
             height: 100%;
             border-radius: 6px;
           }
+        }
+
+        &:hover {
+          cursor: pointer;
         }
       }
     }
