@@ -5,13 +5,33 @@ import Enter from "./pages/Enter";
 import Navbar from "./components/Navbar/Navbar";
 import { AnimatePresence } from "framer-motion";
 import Banner from "./components/Banner/Banner";
+import ItemModal from "./components/ItemModal/ItemModal";
+import { useAppSelector } from "./storage/app/hooks";
 
 export default function App() {
+  const itemModal = useAppSelector((state) => state.itemModal);
+
   return (
     <>
       <Router>
         <Navbar />
         <Banner />
+
+        {itemModal.isVisible && (
+          <div
+            style={{
+              position: "fixed",
+              zIndex: 10,
+              backgroundColor: "rgba(0, 0, 0, .8)",
+              top: 0,
+              height: "100%",
+              width: "100%",
+            }}
+          >
+            <ItemModal food={itemModal.food} />
+          </div>
+        )}
+
         <AnimatePresence>
           <Routes>
             <Route path="/" element={<Menu />} />
