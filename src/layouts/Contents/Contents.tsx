@@ -1,47 +1,52 @@
 import { KeyboardArrowUp } from "@mui/icons-material";
 import { useEffect, useState } from "react";
-import { MenuDetails } from "./types/MenuDetails";
 import { menuDetails } from "../../services/menuServices";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAppDispatch } from "../../storage/app/hooks";
+import { show } from "../../storage/features/item-modal/itemModalSlice";
+import { MenuSection } from "../../types/api-response/MenuDetails";
+
+type MenuSectionNavigation = MenuSection & { isSelected: boolean };
 
 export default function Contents() {
-  const [menuItems, setMenuItems] = useState<MenuDetails[]>([]);
+  const [menuSections, setMenuSections] = useState<MenuSectionNavigation[]>([]);
   const [itemsSectionVisible, setItemsSectionsVisible] = useState<string[]>([]);
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const { sections } = menuDetails;
 
-    const details = sections.map((details) => {
-      return {
-        name: details.name,
-        image: details.images[0].image,
-        isSelected: false,
-        items: details.items,
-      };
-    });
-
-    details[0].isSelected = true;
-
-    setMenuItems(details);
-    let items = details.map((item) =>
-      item.isSelected ? item.name.toLowerCase() : "",
+    const menuSectionsNavigation: MenuSectionNavigation[] = sections.map(
+      (sections) => {
+        return {
+          ...sections,
+          isSelected: false,
+        };
+      },
     );
 
-    items = items.filter((item) => item.trim() !== "");
+    menuSectionsNavigation[0].isSelected = true;
+
+    setMenuSections(menuSectionsNavigation);
+
+    let items = menuSectionsNavigation
+      .map((item) => (item.isSelected ? item.name.toLowerCase() : ""))
+      .filter((item) => item.trim() !== "");
 
     setItemsSectionsVisible(items);
   }, []);
 
   function selectTab(tab: string) {
-    const cleanedNavbarItems = menuItems.map((item) => {
+    const cleanedNavbarItems = menuSections.map((item) => {
       item.isSelected = false;
       if (item.name == tab) item.isSelected = true;
       return item;
     });
 
-    setMenuItems(cleanedNavbarItems);
+    setMenuSections(cleanedNavbarItems);
 
-    menuItems.forEach((item) => {
+    menuSections.forEach((item) => {
       if (item.isSelected) {
         setItemsSectionsVisible([item.name.toLowerCase()]);
       }
@@ -66,7 +71,7 @@ export default function Contents() {
   return (
     <div className="contents">
       <header className="contents_navbar">
-        {menuItems.map((item, index) => (
+        {menuSections.map((item, index) => (
           <motion.nav
             className={`contents_navbar__nav-item${item.isSelected ? "--selected" : ""}`}
             key={index}
@@ -78,7 +83,7 @@ export default function Contents() {
             >
               <img
                 className="contents__image-item"
-                src={item.image}
+                src={item.images && item.images[0].image}
                 alt={item.name}
               />
             </div>
@@ -89,7 +94,7 @@ export default function Contents() {
       </header>
 
       <main className="contents_main">
-        {menuItems.map((item, item_index) => (
+        {menuSections.map((item, item_index) => (
           <section className="contents_main_items" key={item_index}>
             <nav
               className="contents_main_items_nav"
@@ -128,9 +133,9 @@ export default function Contents() {
                   {food && (
                     <motion.div
                       className="contents_main__item"
-                      onClick={() => console.log(food.name)}
                       whileHover={{ cursor: "pointer", scale: 0.97 }}
                       whileTap={{ scale: 0.97 }}
+                      onClick={() => dispatch(show({ isVisible: true, food }))}
                     >
                       <div className="contents_main_items__info">
                         <h1 className="contents_main_items__name">
