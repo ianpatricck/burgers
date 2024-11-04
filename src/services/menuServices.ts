@@ -1,4 +1,6 @@
-export const menuDetails = {
+import { MenuDetails } from "../types/api-response/MenuDetails";
+
+export const menuDetails: MenuDetails = {
   id: 14730,
   name: "FE TEST",
   type: "MENU",
