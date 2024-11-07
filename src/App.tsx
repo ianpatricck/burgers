@@ -22,14 +22,7 @@ export default function App() {
             initial={{ opacity: 0.5 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.1 }}
-            style={{
-              position: "fixed",
-              zIndex: 10,
-              backgroundColor: "rgba(0, 0, 0, .8)",
-              top: 0,
-              height: "100%",
-              width: "100%",
-            }}
+            className="item-modal_container"
           >
             <ItemModal isVisible={itemModal.isVisible} food={itemModal.food} />
           </motion.div>
