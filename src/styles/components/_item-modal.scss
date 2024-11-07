@@ -34,10 +34,10 @@
         color: #ffffff;
         position: absolute;
         left: 90%;
-        margin: .5rem;
+        margin: 0.5rem;
         cursor: pointer;
       }
-      
+
       .item-model_banner__image {
         height: 100%;
         background-color: #ccc;
@@ -122,9 +122,18 @@
         margin-top: 0.5em;
 
         .item-modal_footer_quantity__icon {
-          color: abstracts.$primary-color;
+          background-color: abstracts.$primary-color;
+          color: #ffffff;
+          border-radius: 50px;
           font-size: 1.8em;
           cursor: pointer;
+
+          &--disable {
+            @extend .item-modal_footer_quantity__icon;
+            background-color: #dadada;
+            color: #5f5f5f;
+            cursor: auto;
+          }
         }
 
         .item-modal_footer_quantity__value {

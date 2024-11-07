@@ -1,15 +1,42 @@
-import { AddCircle, CancelRounded, RemoveCircle } from "@mui/icons-material";
+import { Add, CancelRounded, Remove } from "@mui/icons-material";
 import {
   close,
   ItemModalState,
 } from "../../storage/features/item-modal/itemModalSlice";
 import { useAppDispatch } from "../../storage/app/hooks";
+import { useState } from "react";
 
 export default function ItemModal({ food }: ItemModalState) {
+  const [quantity, setQuantity] = useState<number>(1);
+
   const dispatch = useAppDispatch();
+
+  function getInitialPrice(): number {
+    return food.price
+      ? food.price
+      : food.modifiers
+        ? food.modifiers[0].items[0].price
+        : 0;
+  }
+
+  const [price, setPrice] = useState<number>(getInitialPrice());
+  const [currentPrice, setCurrentPrice] = useState<number>(getInitialPrice());
 
   function convertAmountToBRL(amount: number): string {
     return amount.toLocaleString("pt-br", { minimumFractionDigits: 2 });
+  }
+
+  function handlePrice(newPrice: number): void {
+    setQuantity(1);
+    setPrice(newPrice);
+    setCurrentPrice(newPrice);
+  }
+
+  function handleQuantity(newQuantity: number): void {
+    if (newQuantity >= 1 && newQuantity <= 20) {
+      setQuantity(newQuantity);
+      setPrice(currentPrice * newQuantity);
+    }
   }
 
   function addToOrder() {
@@ -61,13 +88,14 @@ export default function ItemModal({ food }: ItemModalState) {
                     <input
                       type="radio"
                       name="item-radio"
-                      value="item-1"
+                      value={item.name}
                       defaultChecked={
                         food.modifiers && food.modifiers[0].items[0] == item
                           ? true
                           : false
                       }
                       className="item-modal_main_radio"
+                      onChange={() => handlePrice(item.price)}
                     />
                   </label>
                 </div>
@@ -78,16 +106,22 @@ export default function ItemModal({ food }: ItemModalState) {
 
         <footer className="item-modal_footer">
           <div className="item-modal_footer_actions">
-            <RemoveCircle className="item-modal_footer_quantity__icon" />
-            <b className="item-modal_footer_quantity__value">1</b>
-            <AddCircle className="item-modal_footer_quantity__icon" />
+            <Remove
+              className={`item-modal_footer_quantity__icon${quantity == 1 ? "--disable" : ""}`}
+              onClick={() => handleQuantity(quantity - 1)}
+            />
+            <b className="item-modal_footer_quantity__value">{quantity}</b>
+            <Add
+              className={`item-modal_footer_quantity__icon${quantity == 20 ? "--disable" : ""}`}
+              onClick={() => handleQuantity(quantity + 1)}
+            />
           </div>
           <button
             className="item-modal_footer__button"
             type="button"
             onClick={addToOrder}
           >
-            Add to Order R${convertAmountToBRL(food.price)}
+            Add to Order R${convertAmountToBRL(price)}
           </button>
         </footer>
       </div>

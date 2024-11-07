@@ -3,7 +3,7 @@ import Menu from "./pages/Menu";
 import Contact from "./pages/Contact";
 import Enter from "./pages/Enter";
 import Navbar from "./components/Navbar/Navbar";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Banner from "./components/Banner/Banner";
 import ItemModal from "./components/ItemModal/ItemModal";
 import { useAppSelector } from "./storage/app/hooks";
@@ -18,7 +18,10 @@ export default function App() {
         <Banner />
 
         {itemModal.isVisible && (
-          <div
+          <motion.div
+            initial={{ opacity: 0.5 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.1 }}
             style={{
               position: "fixed",
               zIndex: 10,
@@ -28,8 +31,8 @@ export default function App() {
               width: "100%",
             }}
           >
-            <ItemModal food={itemModal.food} />
-          </div>
+            <ItemModal isVisible={itemModal.isVisible} food={itemModal.food} />
+          </motion.div>
         )}
 
         <AnimatePresence>
