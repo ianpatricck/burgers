@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useAppDispatch } from "../../storage/app/hooks";
 import { show } from "../../storage/features/item-modal/itemModalSlice";
 import { MenuSection } from "../../types/api-response/MenuDetails";
+import { convertAmountToBRL } from "../../helpers/convertAbountToBRL";
 
 type MenuSectionNavigation = MenuSection & { isSelected: boolean };
 
@@ -62,10 +63,6 @@ export default function Contents() {
     setItemsSectionsVisible(
       itemsSectionVisible.filter((item) => item !== itemName),
     );
-  }
-
-  function convertAmountToBRL(amount: number): string {
-    return amount.toLocaleString("pt-br", { minimumFractionDigits: 2 });
   }
 
   return (
