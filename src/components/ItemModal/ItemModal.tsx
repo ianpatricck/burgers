@@ -3,8 +3,15 @@ import {
   close,
   ItemModalState,
 } from "../../storage/features/item-modal/itemModalSlice";
+import { addToCart } from "../../storage/features/cart/cart";
 import { useAppDispatch } from "../../storage/app/hooks";
 import { useState } from "react";
+import { convertAmountToBRL } from "../../helpers/convertAbountToBRL";
+
+type Option = {
+  name: string;
+  price: number;
+};
 
 export default function ItemModal({ food }: ItemModalState) {
   const [quantity, setQuantity] = useState<number>(1);
@@ -19,28 +26,44 @@ export default function ItemModal({ food }: ItemModalState) {
         : 0;
   }
 
-  const [price, setPrice] = useState<number>(getInitialPrice());
-  const [currentPrice, setCurrentPrice] = useState<number>(getInitialPrice());
-
-  function convertAmountToBRL(amount: number): string {
-    return amount.toLocaleString("pt-br", { minimumFractionDigits: 2 });
+  function getInitialOption(): Option | undefined {
+    let firstItem = food.modifiers ? food.modifiers[0].items[0] : undefined;
+    return firstItem
+      ? { name: firstItem.name, price: firstItem.price }
+      : undefined;
   }
 
-  function handlePrice(newPrice: number): void {
+  const [price, setPrice] = useState<number>(getInitialPrice());
+  const [realPrice, setRealPrice] = useState<number>(getInitialPrice());
+  const [option, setOption] = useState<Option | undefined>(getInitialOption());
+
+  function handlePrice(option: { name: string; price: number }): void {
     setQuantity(1);
-    setPrice(newPrice);
-    setCurrentPrice(newPrice);
+    setPrice(option.price);
+    setRealPrice(option.price);
+    setOption(option);
   }
 
   function handleQuantity(newQuantity: number): void {
     if (newQuantity >= 1 && newQuantity <= 20) {
       setQuantity(newQuantity);
-      setPrice(currentPrice * newQuantity);
+      setPrice(realPrice * newQuantity);
     }
   }
 
   function addToOrder() {
-    console.log("add to order");
+    dispatch(
+      addToCart({
+        id: food.id,
+        name: food.name,
+        price: price,
+        real_price: realPrice,
+        aditional: option?.name,
+        quantity: quantity,
+      }),
+    );
+
+    dispatch(close());
   }
 
   return (
@@ -95,7 +118,9 @@ export default function ItemModal({ food }: ItemModalState) {
                           : false
                       }
                       className="item-modal_main_radio"
-                      onChange={() => handlePrice(item.price)}
+                      onChange={() =>
+                        handlePrice({ name: item.name, price: item.price })
+                      }
                     />
                   </label>
                 </div>
