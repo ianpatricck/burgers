@@ -22,6 +22,18 @@
     .cart_main {
       background-color: #ffffff;
       padding: 1.5rem;
+      overflow-y: scroll;
+      max-height: 20vh;
+
+      &::-webkit-scrollbar {
+        width: 2px;
+        height: 2px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #6f6f6f;
+        border-radius: 2em;
+      }
 
       .cart_main_notfound__message {
         color: #464646;
@@ -37,6 +49,7 @@
           .cart_main_item__price {
             font-weight: 700;
             color: #121212;
+            margin-top: 0.3em;
           }
         }
 
