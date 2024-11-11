@@ -21,7 +21,7 @@ export default function Cart() {
   }
 
   function handleQuantity(item: CartType): void {
-    if (item.quantity >= 1 && item.quantity <= 20) {
+    if (item.quantity >= 0 && item.quantity <= 20) {
       dispatch(updateQuantity(item));
     }
   }
@@ -41,7 +41,10 @@ export default function Cart() {
           )}
 
           {cart.map((item, index) => (
-            <div className="cart_main_item" key={index}>
+            <div
+              className={`cart_main_item${item.quantity == 0 ? "--unselected" : ""}`}
+              key={index}
+            >
               <nav className="cart_main_item_navbar">
                 <span className="cart_main_item__name">{item.name}</span>
                 <span className="cart_main_item__price">
@@ -55,7 +58,7 @@ export default function Cart() {
                 <RemoveCircle
                   className="cart_main_item_quantity__icon"
                   onClick={() =>
-                    handleQuantity({...item, quantity: item.quantity - 1})
+                    handleQuantity({ ...item, quantity: item.quantity - 1 })
                   }
                 />
                 <b className="cart_main_item_quantity__value">
@@ -64,7 +67,7 @@ export default function Cart() {
                 <AddCircle
                   className="cart_main_item_quantity__icon"
                   onClick={() =>
-                    handleQuantity({...item, quantity: item.quantity + 1})
+                    handleQuantity({ ...item, quantity: item.quantity + 1 })
                   }
                 />
               </div>
