@@ -1,0 +1,124 @@
+@use "../abstracts/" as abstracts;
+
+.basket {
+  background-color: #ffffff;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: scroll;
+
+  .basket_header {
+    padding: 1.2em;
+    display: grid;
+    grid-template-columns: 1fr 0fr 0;
+    justify-items: center;
+    border-bottom: 0.1em solid #ccc;
+
+    .basket_header__title {
+      font-size: 1.3em;
+      font-family: "Roboto Medium";
+    }
+
+    .basket_header__close {
+      cursor: pointer;
+    }
+  }
+
+  .basket_main {
+    .basket_main_item {
+      padding: 1.2em;
+      border-bottom: 0.1em solid #eee;
+
+      .basket_main_item_navbar {
+        display: flex;
+        justify-content: space-between;
+
+        .basket_main_item__name {
+          font-size: 1em;
+        }
+
+        .basket_main_item__price {
+          font-family: "Roboto Medium";
+          font-size: 1em;
+        }
+      }
+
+      .basket_main_item__aditional {
+        color: #5f5f5f;
+        margin-top: 0.5em;
+      }
+
+      .basket_main_item_quantity {
+        display: flex;
+        align-items: center;
+        margin-top: 0.5em;
+
+        .basket_main_item_quantity__icon {
+          color: #4f372f;
+        }
+
+        .basket_main_item_quantity__value {
+          margin: 0 0.5em 0 0.5em;
+          font-size: 1.2em;
+          font-family: "Roboto Medium";
+        }
+      }
+    }
+  }
+
+  .basket_footer {
+    padding: 0.1em;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 90vh;
+
+    .basket_footer_wrapper {
+      width: 100%;
+
+      .basket_footer_subtotal {
+        margin: 1em;
+        padding-bottom: 0.8em;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 0.1em solid #ddd;
+      }
+
+      .basket_footer_total {
+        margin: 1em;
+        display: flex;
+        justify-content: space-between;
+
+        .basket_footer_total__field {
+          font-family: "Roboto Light";
+          font-size: 1.5em;
+        }
+
+        .basket_footer_total__value {
+          font-family: "Roboto Medium";
+          font-size: 1.5em;
+        }
+      }
+    }
+
+    .basket_footer__button {
+      position: fixed;
+      bottom: 1em;
+      border: none;
+      background-color: abstracts.$primary-color;
+      cursor: pointer;
+      color: #ffffff;
+      text-align: center;
+      border-radius: 4em;
+      padding: 0.8em;
+      width: 90%;
+      font-family: "Roboto Medium";
+      font-size: 0.9em;
+    }
+  }
+}

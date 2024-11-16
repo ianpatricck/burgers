@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Banner from "./components/Banner/Banner";
 import ItemModal from "./components/ItemModal/ItemModal";
 import { useAppSelector } from "./storage/app/hooks";
+import Basket from "./components/Basket/Basket";
 
 export default function App() {
   const itemModal = useAppSelector((state) => state.itemModal);
@@ -16,6 +17,8 @@ export default function App() {
       <Router>
         <Navbar />
         <Banner />
+
+        <Basket />
 
         {itemModal.isVisible && (
           <motion.div
