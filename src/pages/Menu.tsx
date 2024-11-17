@@ -2,8 +2,13 @@ import { motion } from "framer-motion";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Cart from "../components/Cart/Cart";
 import Contents from "../layouts/Contents/Contents";
+import { useDispatch } from "react-redux";
+import { open } from "../storage/features/cart/basketSlice";
 
 export default function Menu() {
+
+  const dispatch = useDispatch();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -21,6 +26,11 @@ export default function Menu() {
             <Cart />
           </main>
         </div>
+        <footer className="menu_footer">
+          <button className="menu_footer__button" type="button" onClick={() => dispatch(open())}>
+            Your basket • 1 item
+          </button>
+        </footer>
       </div>
     </motion.div>
   );

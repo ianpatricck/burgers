@@ -3,7 +3,7 @@ import {
   close,
   ItemModalState,
 } from "../../storage/features/item-modal/itemModalSlice";
-import { addToCart } from "../../storage/features/cart/cart";
+import { addToCart } from "../../storage/features/cart/cartSlice";
 import { useAppDispatch } from "../../storage/app/hooks";
 import { useState } from "react";
 import { convertAmountToBRL } from "../../helpers/convertAbountToBRL";

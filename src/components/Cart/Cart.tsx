@@ -2,7 +2,7 @@ import { AddCircle, RemoveCircle } from "@mui/icons-material";
 import { useAppDispatch, useAppSelector } from "../../storage/app/hooks";
 import { convertAmountToBRL } from "../../helpers/convertAbountToBRL";
 import { Cart as CartType } from "../../types/cart/cart";
-import { updateQuantity } from "../../storage/features/cart/cart";
+import { updateQuantity } from "../../storage/features/cart/cartSlice";
 
 export default function Cart() {
   const cart = useAppSelector((state) => state.cart);
