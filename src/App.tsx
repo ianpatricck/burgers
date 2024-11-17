@@ -11,6 +11,7 @@ import Basket from "./components/Basket/Basket";
 
 export default function App() {
   const itemModal = useAppSelector((state) => state.itemModal);
+  const basket = useAppSelector((state) => state.basket);
 
   return (
     <>
@@ -18,7 +19,7 @@ export default function App() {
         <Navbar />
         <Banner />
 
-        <Basket />
+        {basket.isOpen && <Basket />}
 
         {itemModal.isVisible && (
           <motion.div
