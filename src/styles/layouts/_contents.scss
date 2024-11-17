@@ -160,6 +160,10 @@
         }
       }
     }
+
+    @media screen and (max-width: abstracts.$contents-small-width) {
+      padding-bottom: 5em;
+    }
   }
 
   @media screen and (max-width: abstracts.$contents-small-width) {
