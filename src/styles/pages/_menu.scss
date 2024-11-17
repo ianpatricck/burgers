@@ -33,6 +33,32 @@
     }
   }
 
+  .menu_footer {
+    position: fixed;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    bottom: 1em;
+
+    .menu_footer__button {
+      bottom: 1em;
+      border: none;
+      background-color: abstracts.$primary-color;
+      cursor: pointer;
+      color: #ffffff;
+      text-align: center;
+      border-radius: 4em;
+      padding: 0.8em;
+      width: 90%;
+      font-family: "Roboto Medium";
+      font-size: 0.9em;
+    }
+
+    @media screen and (max-width: abstracts.$contents-small-width) {
+      display: flex;
+    }
+  }
+
   @media screen and (max-width: abstracts.$contents-small-width) {
     background-color: #ffffff;
   }
