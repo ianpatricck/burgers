@@ -4,8 +4,10 @@ import Cart from "../components/Cart/Cart";
 import Contents from "../layouts/Contents/Contents";
 import { useDispatch } from "react-redux";
 import { open } from "../storage/features/cart/basketSlice";
+import { useAppSelector } from "../storage/app/hooks";
 
 export default function Menu() {
+  const cart = useAppSelector((state) => state.cart);
 
   const dispatch = useDispatch();
 
@@ -26,11 +28,20 @@ export default function Menu() {
             <Cart />
           </main>
         </div>
-        <footer className="menu_footer">
-          <button className="menu_footer__button" type="button" onClick={() => dispatch(open())}>
-            Your basket • 1 item
-          </button>
-        </footer>
+
+        {cart.length && (
+          <footer className="menu_footer">
+            <button
+              className="menu_footer__button"
+              type="button"
+              onClick={() => dispatch(open())}
+            >
+              {cart.length > 1
+                ? `Your basket • ${cart.length} items`
+                : `Your basket • 1 item`}
+            </button>
+          </footer>
+        )}
       </div>
     </motion.div>
   );
