@@ -117,6 +117,15 @@
             font-size: 13pt;
             color: #121212;
             font-family: "Roboto Medium";
+            margin-bottom: 0.5em;
+
+            .contents_main__quantity {
+              color: #ffffff;
+              background-color: abstracts.$primary-color;
+              padding: 0.1em 0.4em 0.1em 0.4em;
+              border-radius: 3px;
+              margin-right: 0.5em;
+            }
           }
 
           .contents_main_items__description {
