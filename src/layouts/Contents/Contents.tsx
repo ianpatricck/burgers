@@ -2,9 +2,9 @@ import { KeyboardArrowUp } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { menuDetails } from "../../services/menuServices";
 import { motion, AnimatePresence } from "framer-motion";
-import { useAppDispatch } from "../../storage/app/hooks";
+import { useAppDispatch, useAppSelector } from "../../storage/app/hooks";
 import { show } from "../../storage/features/item-modal/itemModalSlice";
-import { MenuSection } from "../../types/api-response/MenuDetails";
+import { MenuSection, SectionItem } from "../../types/api-response/MenuDetails";
 import { convertAmountToBRL } from "../../helpers/convertAbountToBRL";
 
 type MenuSectionNavigation = MenuSection & { isSelected: boolean };
@@ -13,6 +13,7 @@ export default function Contents() {
   const [menuSections, setMenuSections] = useState<MenuSectionNavigation[]>([]);
   const [itemsSectionVisible, setItemsSectionsVisible] = useState<string[]>([]);
 
+  const cart = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -63,6 +64,20 @@ export default function Contents() {
     setItemsSectionsVisible(
       itemsSectionVisible.filter((item) => item !== itemName),
     );
+  }
+
+  function getQtd(food: SectionItem): number {
+    const qtd = cart.find((item) => {
+      if (item.name == food.name) {
+        return item.quantity;
+      }
+    })?.quantity;
+
+    if (!qtd) {
+      return 0;
+    }
+
+    return qtd;
   }
 
   return (
@@ -136,6 +151,11 @@ export default function Contents() {
                     >
                       <div className="contents_main_items__info">
                         <h1 className="contents_main_items__name">
+                          {getQtd(food) !== 0 && (
+                            <b className="contents_main__quantity">
+                              {getQtd(food)}
+                            </b>
+                          )}
                           {food.name}
                         </h1>
                         <p className="contents_main_items__description">
