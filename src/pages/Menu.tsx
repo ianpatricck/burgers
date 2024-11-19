@@ -29,7 +29,7 @@ export default function Menu() {
           </main>
         </div>
 
-        {cart.length && (
+        {cart.length ? (
           <footer className="menu_footer">
             <button
               className="menu_footer__button"
@@ -41,7 +41,7 @@ export default function Menu() {
                 : `Your basket • 1 item`}
             </button>
           </footer>
-        )}
+        ) : null}
       </div>
     </motion.div>
   );
