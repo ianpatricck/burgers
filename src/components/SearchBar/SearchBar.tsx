@@ -3,6 +3,7 @@ import { menuDetails } from "../../services/menuServices";
 import { useState } from "react";
 import { SectionItem } from "../../types/api-response/MenuDetails";
 import { convertAmountToBRL } from "../../helpers/convertAbountToBRL";
+import { restaurantDetails } from "../../services/restaurantDetails";
 
 export default function SearchBar() {
   const [foundItems, setFoundItems] = useState<SectionItem[]>([]);
@@ -56,7 +57,10 @@ export default function SearchBar() {
                     ? item.description
                     : "Sem descrição provida"}
                 </p>
-                <span>R${convertAmountToBRL(item.price)}</span>
+                <span>
+                  {restaurantDetails.currency}
+                  {convertAmountToBRL(item.price)}
+                </span>
               </aside>
             </div>
           ))}
