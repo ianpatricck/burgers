@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../storage/app/hooks";
 import { convertAmountToBRL } from "../../helpers/convertAbountToBRL";
 import { Cart as CartType } from "../../types/cart/cart";
 import { updateQuantity } from "../../storage/features/cart/cartSlice";
+import { restaurantDetails } from "../../services/restaurantDetails";
 
 export default function Cart() {
   const cart = useAppSelector((state) => state.cart);
@@ -48,7 +49,8 @@ export default function Cart() {
               <nav className="cart_main_item_navbar">
                 <span className="cart_main_item__name">{item.name}</span>
                 <span className="cart_main_item__price">
-                  R${convertAmountToBRL(item.price)}
+                  {restaurantDetails.currency}
+                  {convertAmountToBRL(item.price)}
                 </span>
               </nav>
               <p className="cart_main_item__aditional">
@@ -80,13 +82,15 @@ export default function Cart() {
             <div className="cart_footer_subtotal">
               <span className="cart_footer_subtotal__field">Sub total</span>
               <span className="cart_footer_subtotal__value">
-                R${convertAmountToBRL(calculateSubTotalPrice())}
+                {restaurantDetails.currency}
+                {convertAmountToBRL(calculateSubTotalPrice())}
               </span>
             </div>
             <div className="cart_footer_total">
               <span className="cart_footer_total__field">Total:</span>
               <span className="cart_footer_total__value">
-                R${convertAmountToBRL(calculateTotalPrice())}
+                {restaurantDetails.currency}
+                {convertAmountToBRL(calculateTotalPrice())}
               </span>
             </div>
           </footer>
