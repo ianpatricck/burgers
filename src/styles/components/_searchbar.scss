@@ -1,31 +1,87 @@
 @use "../abstracts/" as abstracts;
 
 .searchbar {
-  background-color: #ffffff;
-  margin-top: 0.7rem;
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem;
-  border: 0.1rem solid #8a94a4;
-  border-radius: 8px;
+  .searchbar_field {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    margin-top: 0.7rem;
+    padding: 0.5rem;
+    border: 0.1rem solid #8a94a4;
+    border-radius: 8px;
 
-  .searchbar__icon {
-    margin-right: 0.5rem;
-    color: #8a94a4;
+    .searchbar__icon {
+      margin-right: 0.5rem;
+      color: #8a94a4;
+    }
+
+    .searchbar__input {
+      border: none;
+      outline: 0;
+      width: 100%;
+      font-size: 11pt;
+
+      &::placeholder {
+        color: #2c2c2c;
+      }
+    }
   }
 
-  .searchbar__input {
-    border: none;
-    outline: 0;
-    width: 100%;
-    font-size: 11pt;
+  .searchbar_content {
+    padding-top: 0.5em;
+    background-color: #ffffff;
+    border-radius: 6px;
 
-    &::placeholder {
-      color: #2c2c2c;
+    .searchbar_content__item {
+      display: flex;
+      padding: 0.5em;
+      padding-bottom: 0.8em;
+      border-top: 0.1em solid #ccc;
+
+      .searchbar_content__image {
+        width: 130px;
+        height: 90px;
+
+        img {
+          object-fit: cover;
+          width: 130px;
+          height: 90px;
+          border-radius: 6px;
+        }
+
+        .searchbar_content__image--404 {
+          width: 130px;
+          height: 90px;
+          background-color: #ccc;
+          border-radius: 6px;
+        }
+      }
+
+      .searchbar_content__info {
+        margin-left: 1em;
+
+        h1 {
+          font-size: 13pt;
+          color: #121212;
+          font-family: "Roboto Medium";
+        }
+
+        p {
+          font-weight: 100;
+          font-family: "Roboto Light";
+          margin-top: 0.3em;
+          margin-bottom: 0.3em;
+        }
+
+        span {
+          font-family: "Roboto Medium";
+          color: #464646;
+        }
+      }
     }
   }
 
   @media screen and (max-width: abstracts.$contents-small-width) {
-      width: 90%;
-    }
+    width: 90%;
+  }
 }
