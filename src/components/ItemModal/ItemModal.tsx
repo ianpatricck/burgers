@@ -7,6 +7,7 @@ import { addToCart } from "../../storage/features/cart/cartSlice";
 import { useAppDispatch } from "../../storage/app/hooks";
 import { useState } from "react";
 import { convertAmountToBRL } from "../../helpers/convertAbountToBRL";
+import { restaurantDetails } from "../../services/restaurantDetails";
 
 type Option = {
   name: string;
@@ -105,7 +106,8 @@ export default function ItemModal({ food }: ItemModalState) {
                         {item.name}
                       </span>
                       <span className="item-modal_main_label__price">
-                        R${convertAmountToBRL(item.price)}
+                        {restaurantDetails.currency}
+                        {convertAmountToBRL(item.price)}
                       </span>
                     </div>
                     <input
@@ -146,7 +148,7 @@ export default function ItemModal({ food }: ItemModalState) {
             type="button"
             onClick={addToOrder}
           >
-            Add to Order R${convertAmountToBRL(price)}
+            Add to Order {restaurantDetails.currency + convertAmountToBRL(price)}
           </button>
         </footer>
       </div>
