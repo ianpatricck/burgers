@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../storage/app/hooks";
 import { show } from "../../storage/features/item-modal/itemModalSlice";
 import { MenuSection, SectionItem } from "../../types/api-response/MenuDetails";
 import { convertAmountToBRL } from "../../helpers/convertAbountToBRL";
+import { restaurantDetails } from "../../services/restaurantDetails";
 
 type MenuSectionNavigation = MenuSection & { isSelected: boolean };
 
@@ -164,7 +165,8 @@ export default function Contents() {
                             : "Sem descrição provida"}
                         </p>
                         <span className="contents_main_items__price">
-                          R${convertAmountToBRL(food.price)}
+                          {restaurantDetails.currency}
+                          {convertAmountToBRL(food.price)}
                         </span>
                       </div>
 
