@@ -6,8 +6,6 @@ export default function Contact() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-    >
-      <h1>Contato!</h1>
-    </motion.div>
+    ></motion.div>
   );
 }
