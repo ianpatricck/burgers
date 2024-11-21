@@ -2,7 +2,7 @@ import { SearchSharp } from "@mui/icons-material";
 import { menuDetails } from "../../services/menuServices";
 import { useState } from "react";
 import { SectionItem } from "../../types/api-response/MenuDetails";
-import { convertAmountToBRL } from "../../helpers/convertAbountToBRL";
+import { convertAmountToBRL } from "../../helpers/convertAmountToBRL";
 import { restaurantDetails } from "../../services/restaurantDetails";
 
 export default function SearchBar() {

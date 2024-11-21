@@ -1,6 +1,6 @@
 import { AddCircle, RemoveCircle } from "@mui/icons-material";
 import { useAppDispatch, useAppSelector } from "../../storage/app/hooks";
-import { convertAmountToBRL } from "../../helpers/convertAbountToBRL";
+import { convertAmountToBRL } from "../../helpers/convertAmountToBRL";
 import { Cart as CartType } from "../../types/cart/cart";
 import { updateQuantity } from "../../storage/features/cart/cartSlice";
 import { restaurantDetails } from "../../services/restaurantDetails";

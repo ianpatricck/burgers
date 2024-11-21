@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "../../storage/app/hooks";
 import { show } from "../../storage/features/item-modal/itemModalSlice";
 import { MenuSection, SectionItem } from "../../types/api-response/MenuDetails";
-import { convertAmountToBRL } from "../../helpers/convertAbountToBRL";
+import { convertAmountToBRL } from "../../helpers/convertAmountToBRL";
 import { restaurantDetails } from "../../services/restaurantDetails";
 
 type MenuSectionNavigation = MenuSection & { isSelected: boolean };

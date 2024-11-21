@@ -4,7 +4,7 @@ import { close } from "../../storage/features/cart/basketSlice";
 import { useAppSelector } from "../../storage/app/hooks";
 import { updateQuantity } from "../../storage/features/cart/cartSlice";
 import { Cart as CartType } from "../../types/cart/cart";
-import { convertAmountToBRL } from "../../helpers/convertAbountToBRL";
+import { convertAmountToBRL } from "../../helpers/convertAmountToBRL";
 
 export default function Basket() {
   const cart = useAppSelector((state) => state.cart);

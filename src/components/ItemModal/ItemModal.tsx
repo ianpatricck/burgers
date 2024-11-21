@@ -6,7 +6,7 @@ import {
 import { addToCart } from "../../storage/features/cart/cartSlice";
 import { useAppDispatch } from "../../storage/app/hooks";
 import { useState } from "react";
-import { convertAmountToBRL } from "../../helpers/convertAbountToBRL";
+import { convertAmountToBRL } from "../../helpers/convertAmountToBRL";
 import { restaurantDetails } from "../../services/restaurantDetails";
 
 type Option = {
