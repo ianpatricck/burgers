@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import Basket from "./Basket";
+import Basket from ".";
 import { Provider } from "react-redux";
 import { store } from "../../storage/app/store";
 

@@ -148,7 +148,8 @@ export default function ItemModal({ food }: ItemModalState) {
             type="button"
             onClick={addToOrder}
           >
-            Add to Order {restaurantDetails.currency + convertAmountToBRL(price)}
+            Add to Order
+            {restaurantDetails.currency + convertAmountToBRL(price)}
           </button>
         </footer>
       </div>

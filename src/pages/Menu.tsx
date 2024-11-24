@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import SearchBar from "../components/SearchBar/SearchBar";
-import Cart from "../components/Cart/Cart";
-import Contents from "../layouts/Contents/Contents";
+import SearchBar from "../components/SearchBar";
+import Cart from "../layouts/Cart";
+import Contents from "../layouts/Contents";
 import { useDispatch } from "react-redux";
 import { open } from "../storage/features/cart/basketSlice";
 import { useAppSelector } from "../storage/app/hooks";

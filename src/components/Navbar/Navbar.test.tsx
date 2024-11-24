@@ -1,6 +1,7 @@
+import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import Navbar from "./Navbar";
+import Navbar from ".";
 import { BrowserRouter } from "react-router-dom";
 
 describe("Navbar", () => {

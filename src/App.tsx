@@ -2,12 +2,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Menu from "./pages/Menu";
 import Contact from "./pages/Contact";
 import Enter from "./pages/Enter";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar";
 import { AnimatePresence, motion } from "framer-motion";
-import Banner from "./components/Banner/Banner";
-import ItemModal from "./components/ItemModal/ItemModal";
+import Banner from "./components/Banner";
+import ItemModal from "./components/ItemModal";
 import { useAppSelector } from "./storage/app/hooks";
-import Basket from "./components/Basket/Basket";
+import Basket from "./layouts/Basket";
 
 export default function App() {
   const itemModal = useAppSelector((state) => state.itemModal);

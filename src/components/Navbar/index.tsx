@@ -28,7 +28,9 @@ export default function Navbar() {
           >
             <NavLink
               to="/"
-              className={({ isActive }) => (isActive ? "menu-small__item--active" : "menu-small__item")}
+              className={({ isActive }) =>
+                isActive ? "menu-small__item--active" : "menu-small__item"
+              }
               onClick={() => setCurrentTab("Menu")}
             >
               MENU
@@ -36,7 +38,9 @@ export default function Navbar() {
 
             <NavLink
               to="/enter"
-              className={({ isActive }) => (isActive ? "menu-small__item--active" : "menu-small__item")}
+              className={({ isActive }) =>
+                isActive ? "menu-small__item--active" : "menu-small__item"
+              }
               onClick={() => setCurrentTab("Entrar")}
             >
               ENTRAR
@@ -44,7 +48,9 @@ export default function Navbar() {
 
             <NavLink
               to="/contact"
-              className={({ isActive }) => (isActive ? "menu-small__item--active" : "menu-small__item")}
+              className={({ isActive }) =>
+                isActive ? "menu-small__item--active" : "menu-small__item"
+              }
               onClick={() => setCurrentTab("Contato")}
             >
               CONTATO

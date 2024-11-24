@@ -1,9 +1,11 @@
+import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
-import { describe, it } from "vitest";
-import Banner from "./Banner";
+import { describe, expect, it } from "vitest";
+import Banner from ".";
 
 describe("Banner", () => {
   it("should render the Banner component", () => {
-    render(<Banner />);
+    const { getByTestId } = render(<Banner />);
+    expect(getByTestId("banner")).toBeInTheDocument();
   });
 });
