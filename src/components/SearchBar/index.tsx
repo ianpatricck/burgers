@@ -28,7 +28,7 @@ export default function SearchBar() {
   }
 
   return (
-    <div className="searchbar">
+    <div data-testid="searchbar" className="searchbar">
       <div className="searchbar_field">
         <SearchSharp className="searchbar__icon" />
         <input
