@@ -62,6 +62,7 @@ export default function Navbar() {
       <nav className="items">
         <NavLink
           to="/"
+          data-testid="link"
           className={({ isActive }) => (isActive ? "item--active" : "item")}
         >
           MENU
@@ -69,6 +70,7 @@ export default function Navbar() {
 
         <NavLink
           to="/enter"
+          data-testid="link"
           className={({ isActive }) => (isActive ? "item--active" : "item")}
         >
           ENTRAR
@@ -76,6 +78,7 @@ export default function Navbar() {
 
         <NavLink
           to="/contact"
+          data-testid="link"
           className={({ isActive }) => (isActive ? "item--active" : "item")}
         >
           CONTATO

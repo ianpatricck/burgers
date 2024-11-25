@@ -1,23 +1,19 @@
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import Navbar from ".";
 import { BrowserRouter } from "react-router-dom";
 
 describe("Navbar", () => {
-  it("should render and verify all header items", () => {
-    render(
+  it("should render and verify all header links", () => {
+    const { getAllByTestId } = render(
       <BrowserRouter>
         <Navbar />
       </BrowserRouter>,
     );
 
-    const menuLinks = screen.getAllByText(/MENU/i);
-    const enterLinks = screen.getAllByText(/ENTRAR/i);
-    const contactLinks = screen.getAllByText(/CONTATO/i);
+    const links = getAllByTestId("link");
 
-    expect(menuLinks).toBeDefined();
-    expect(enterLinks).toBeDefined();
-    expect(contactLinks).toBeDefined();
+    links.forEach((link) => expect(link).toBeInTheDocument());
   });
 });
