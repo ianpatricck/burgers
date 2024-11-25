@@ -5,7 +5,7 @@ import Enter from "./pages/Enter";
 import Navbar from "./components/Navbar";
 import { AnimatePresence, motion } from "framer-motion";
 import Banner from "./components/Banner";
-import ItemModal from "./components/ItemModal";
+import ItemModal from "./layouts/ItemModal";
 import { useAppSelector } from "./storage/app/hooks";
 import Basket from "./layouts/Basket";
 
