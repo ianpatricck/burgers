@@ -1,0 +1,11 @@
+@use "../abstracts/" as abstracts;
+
+input.input[type="text"],
+input.input[type="password"] {
+  border: none;
+  outline: none;
+  padding: 1em;
+  border-radius: 1em;
+  font-size: 0.9em;
+  box-shadow: 0 0.4rem #dfd9d9;
+}
