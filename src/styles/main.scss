@@ -6,11 +6,14 @@
 @use "components/navbar";
 @use "components/banner";
 @use "components/searchbar";
+@use "components/input";
+@use "components/button";
 
 @use "pages/menu";
+@use "pages/enter";
 
 @use "layouts/basket";
 @use "layouts/cart";
 @use "layouts/item-modal";
-
 @use "layouts/contents";
+@use "layouts/form";
