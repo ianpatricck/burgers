@@ -1,0 +1,18 @@
+@use "../abstracts/" as abstracts;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 0.9em;
+  margin-top: 2em;
+  width: 20vw;
+  border-radius: 6px;
+
+  @media screen and (max-width: abstracts.$form-medium-width) {
+    width: 50vw;
+  }
+
+  @media screen and (max-width: abstracts.$form-small-width) {
+    width: 90vw;
+  }
+}
