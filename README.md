@@ -1,4 +1,4 @@
-![Burgers restaurant](public/banner.png)
+![Burgers restaurant](public/images/banner.png)
 
 # Burgers Restaurant
 
