@@ -4,9 +4,13 @@ import { useState } from "react";
 import { SectionItem } from "../../types/api-response/MenuDetails";
 import { convertAmountToBRL } from "../../helpers/convertAmountToBRL";
 import { restaurantDetails } from "../../services/restaurantDetails";
+import { useAppDispatch } from "../../storage/app/hooks";
+import { show } from "../../storage/features/item-modal/itemModalSlice";
 
 export default function SearchBar() {
   const [foundItems, setFoundItems] = useState<SectionItem[]>([]);
+
+  const dispatch = useAppDispatch();
 
   function findAllItems() {
     const { sections } = menuDetails;
@@ -42,7 +46,11 @@ export default function SearchBar() {
       {foundItems.length ? (
         <div className="searchbar_content">
           {foundItems.map((item, index) => (
-            <div className="searchbar_content__item" key={index}>
+            <div
+              className="searchbar_content__item"
+              key={index}
+              onClick={() => dispatch(show({ isVisible: true, food: item }))}
+            >
               <div className="searchbar_content__image">
                 {item.images ? (
                   <img src={item.images[0].image} alt="test" />
